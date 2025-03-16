@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react'
-import { Image, StyleSheet, TouchableOpacity, View, Text } from 'react-native'
+import React, { FC, useState } from 'react';
+import { Image, StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
 interface Props {
     path: string,
@@ -8,7 +8,7 @@ interface Props {
     propetryTarget?: number,
     flag?: boolean,
     altPath?: string,
-    spec?: boolean
+    spec?: boolean,
     navigation: any
 }
 
@@ -18,8 +18,7 @@ const MyButton: FC<Props> = ({ path, property, propertyValue, propetryTarget, fl
 
     // Determine the appropriate path based on conditions
     if (!Array.isArray(propertyValue)) {
-        // path = propertyValue >= propetryTarget ? path : altPath;
-        path = path;
+        path = path; // Keep the original path
     } else {
         path = propertyValue.every((value, index) => value > propetryTarget[index]) ? path : altPath;
     }
@@ -30,7 +29,7 @@ const MyButton: FC<Props> = ({ path, property, propertyValue, propetryTarget, fl
 
     switch (property) {
         case 'power':
-            img = require('../assets/images/power.png'); // Use require to load images
+            img = require('../assets/images/power.png');
             break;
         case 'agility':
             img = require('../assets/images/agility.png');
@@ -49,14 +48,13 @@ const MyButton: FC<Props> = ({ path, property, propertyValue, propetryTarget, fl
     }
 
     const navig = () => {
-        // Prevent navigating if path is not defined
         if (spec && !altPath) {
             setDisable(true);
             return;
         }
 
         if (path) {
-            console.log("Navigating to:", path); // Debugging line
+            console.log("Navigating to:", path);
             navigation.replace(path);
         } else {
             console.error("Path is undefined. Cannot navigate.");
@@ -72,33 +70,35 @@ const MyButton: FC<Props> = ({ path, property, propertyValue, propetryTarget, fl
         </View>
     );
 };
-
-
+//karp
 export default MyButton;
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
-        // height: 30,
-        justifyContent: 'center', // Центрирование по вертикали
-        alignItems: 'center', // Центрирование по горизонтали
+        flex: 1,
+        height: 30,
+        marginLeft: 30,
+        flexDirection: "row",
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     button: {
         padding: 10,
-        // backgroundColor: '#007BFF',
         backgroundColor: '#800',
         borderRadius: 5,
         width: "80%",
-        marginVertical: 10, // Вертикальные отступы между кнопками
+        marginVertical: 10,
+        alignSelf: 'center', // Центрируем кнопку
+    
     },
     buttonText: {
-        color: '#FFFFFF', // Цвет текста
-        textAlign: 'center', // Центрирование текста
-        fontSize: 16, // Размер шрифта
+        color: '#FFFFFF',
+        textAlign: 'center',
+        fontSize: 16,
     },
     image: {
-        marginTop: 20, // Отступ между кнопкой и изображением
+        marginLeft: 10, // Отступ слева для расстояния между кнопкой и изображением
         height: 30,
-        width: 30
+        width: 30,
     },
 });

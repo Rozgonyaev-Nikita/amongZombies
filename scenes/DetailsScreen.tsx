@@ -24,12 +24,12 @@ const DetailsScreen = ({ navigation }) => {
           Вдруг наступила ночь, и мир, как я его знал, изменился. Я вышел на улицу, чтобы прогуляться, но вместо привычных звуков города меня окружили зомби. Их мертвенные лица и пустые взгляды наполняли улицы. Сердце колотилось в груди, когда я осознал, что нужно бежать. Я спрятался в заброшенном здании, стараясь не издавать ни звука. Снаружи раздавались шорохи и стоны, а я знал, что это только начало. С каждой минутой страх нарастал, и лишь одна мысль не покидала меня: как выжить в этом кошмаре?
         </Text>
       </ScrollView>
-      <View >
+      <View style={styles.groupButton}>
         <MyButton path="Scene1" property='power' navigation={navigation} />
         <MyButton path="Scene1" property='agility' navigation={navigation} />
         <MyButton path="Scene1" property='intellect' navigation={navigation} />
         <MyButton path="Scene1" property='charisma' navigation={navigation} />
-        {/* <MyButton path="Scene1" property='charisma' navigation={navigation} /> */}
+        <MyButton path="Scene1" property='charisma' navigation={navigation} />
       </View>
     </View>
   );
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
     maxHeight: 200, // Ограничение высоты
+    minHeight: 150,
     borderWidth: 0.5, // Уменьшение ширины границы
     borderColor: 'rgba(255, 255, 255, 0.5)', // Полупрозрачный цвет границы
   },
@@ -57,4 +58,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#aaa',
   },
+  groupButton: {
+    flex: 1,
+    maxHeight: 300,
+  }
 });
