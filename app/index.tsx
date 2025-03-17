@@ -1,11 +1,11 @@
 import { Text, View } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import DetailsScreen from "../scenes/DetailsScreen";
-import HomeScreen from "../scenes/HomeScreen";
+import DetailsScreen from "./scenes/DetailsScreen";
+import Scene1 from "./scenes/DetailsScreen";
+import HomeScreen from "./scenes/HomeScreen";
 import { Provider } from 'react-redux';
-import store from '../store/index'; // Импортируйте ваш store
-import Scene1 from "@/scenes/Scene1";
+import store from './store/index'; // Импортируйте ваш storeimport Scene1 from "./scenes/Scene1";
 
 export default function Index() {
 

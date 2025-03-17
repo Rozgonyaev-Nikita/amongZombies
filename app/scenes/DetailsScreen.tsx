@@ -1,8 +1,7 @@
-import MyButton from '@/app/MyButton';
-import Header from '../components/Header';
+import MyButton from '../MyButton';
+import Header from '@components/Header';
 import React, { useEffect } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-import * as Font from 'expo-font';
 
 const DetailsScreen = ({ navigation }) => {
   return (
@@ -10,7 +9,7 @@ const DetailsScreen = ({ navigation }) => {
       <Header />
       <Image
         style={styles.img}
-        source={require('@/assets/images/treesBlack.png')}
+        source={require('@assets/images/treesBlack.png')}
         resizeMode="stretch"
       />
       <ScrollView

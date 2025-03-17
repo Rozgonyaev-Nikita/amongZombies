@@ -2,19 +2,38 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 // import { IUser } from "../types/IUser";
 
 interface IStats {
-  count: number
   stats:{
-
+    power: number,
+    agility: number,
+    intellect: number,
+    stealth: number,
+    charisma: number,
   },
   hidenStatts:{
-
+    stamina: number,
+    composure: number, //холоднокровие
+    perception: number, //восприятие
   },
   osob: {
     
   }
 }
 const initialState: IStats = {
-  count: 0
+  stats:{
+    power: 6,
+    agility: 6,
+    intellect: 6,
+    stealth: 6,
+    charisma: 6,
+  },
+  hidenStatts:{
+    stamina: 6, //выносливость
+    composure: 6, //холоднокровие
+    perception: 6, //восприятие
+  },
+  osob: {
+    
+  }
 };
 
 const statsSlice = createSlice({
