@@ -29,7 +29,7 @@ const DetailsScreen = ({ navigation }) => {
         <MyButton path="Scene1" property='agility' navigation={navigation} />
         <MyButton path="Scene1" property='intellect' navigation={navigation} />
         <MyButton path="Scene1" property='charisma' navigation={navigation} />
-        <MyButton path="Scene1" property='charisma' navigation={navigation} />
+        <MyButton path="Scene1"  navigation={navigation} />
       </View>
     </View>
   );

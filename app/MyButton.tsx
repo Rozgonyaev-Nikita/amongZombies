@@ -66,7 +66,7 @@ const MyButton: FC<Props> = ({ path, property, propertyValue, propetryTarget, fl
             <TouchableOpacity style={styles.button} onPress={navig} disabled={disable}>
                 <Text style={styles.buttonText}>Нажми меня</Text>
             </TouchableOpacity>
-            {img && <Image source={img} style={styles.image} />}
+            {img ? <Image source={img} style={styles.image} /> : <Image source={require('../assets/images/void.png')} style={styles.image} />}
         </View>
     );
 };
