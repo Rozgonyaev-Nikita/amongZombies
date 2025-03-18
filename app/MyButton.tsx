@@ -1,18 +1,22 @@
 import React, { FC, useState } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types/navigTypes'; // Укажите правильный путь
 
-interface Props {
-    path: string,
-    property?: string,
-    propertyValue?: number,
-    propetryTarget?: number,
-    flag?: boolean,
-    altPath?: string,
-    spec?: boolean,
-    navigation: any
+// Обобщённый тип для пропсов
+interface MyButtonProps<RouteName extends keyof RootStackParamList> {
+    path: RouteName; // Имя экрана, на который будет происходить навигация
+    property?: string;
+    propertyValue?: number;
+    propetryTarget?: number;
+    flag?: boolean;
+    altPath?: RouteName; // Альтернативный экран
+    spec?: boolean;
+    navigation: NativeStackNavigationProp<RootStackParamList, RouteName>; // Типизация навигации
 }
 
-const MyButton: FC<Props> = ({ path, property, propertyValue, propetryTarget, flag, altPath, navigation, spec }) => {
+// Обобщённый компонент
+const MyButton = <RouteName extends keyof RootStackParamList>({ path, property, propertyValue, propetryTarget, flag, altPath, navigation, spec }: MyButtonProps<RouteName>) => {
     const [disable, setDisable] = useState(false);
     let img;
 
@@ -55,11 +59,11 @@ const MyButton: FC<Props> = ({ path, property, propertyValue, propetryTarget, fl
 
         if (path) {
             console.log("Navigating to:", path);
-            navigation.replace(path);
+            navigation.replace(path); // Используем navigate
         } else {
             console.error("Path is undefined. Cannot navigate.");
         }
-    }
+    };
 
     return (
         <View style={styles.container}>
@@ -70,13 +74,14 @@ const MyButton: FC<Props> = ({ path, property, propertyValue, propetryTarget, fl
         </View>
     );
 };
-//karp
+
 export default MyButton;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         height: 30,
+        maxHeight: 60,
         marginLeft: 30,
         flexDirection: "row",
         justifyContent: 'center',
@@ -89,7 +94,6 @@ const styles = StyleSheet.create({
         width: "80%",
         marginVertical: 10,
         alignSelf: 'center', // Центрируем кнопку
-    
     },
     buttonText: {
         color: '#FFFFFF',

@@ -1,0 +1,32 @@
+import { StyleSheet } from "react-native";
+
+export const stylesMainScreen = StyleSheet.create({
+    page: {
+      flex: 1,
+      backgroundColor: '#222',
+    },
+    img: {
+      height: 200,
+      width: '100%',
+    },
+    scrollView: {
+      flex: 1,
+      // maxHeight: 200, // Ограничение высоты
+      minHeight: 150,
+      borderWidth: 0.5, // Уменьшение ширины границы
+      borderColor: 'rgba(255, 255, 255, 0.5)', // Полупрозрачный цвет границы 
+    },
+    text: {
+      paddingHorizontal: 10,
+      fontSize: 16,
+      color: '#aaa',
+      // fontFamily: "bar-r"
+    },
+    groupButton: {
+      flex: 1,
+      justifyContent: 'center',
+      // paddingBottom: 30,
+      // maxHeight: 300,
+      minHeight: 250
+    }
+  });
