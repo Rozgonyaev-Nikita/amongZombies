@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import MyButton from './MyButton'
+import MyButton from './components/MyButton'
 
 type Props = {}
 

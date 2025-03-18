@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../types/navigTypes'; // Укажите правильный путь
+import { RootStackParamList } from '../types/navigTypes';
 
 // Обобщённый тип для пропсов
 interface MyButtonProps<RouteName extends keyof RootStackParamList> {
@@ -33,19 +33,19 @@ const MyButton = <RouteName extends keyof RootStackParamList>({ path, property, 
 
     switch (property) {
         case 'power':
-            img = require('../assets/images/power.png');
+            img = require('@assets/images/power.png');
             break;
         case 'agility':
-            img = require('../assets/images/agility.png');
+            img = require('@assets/images/agility.png');
             break;
         case 'intellect':
-            img = require('../assets/images/intellect.png');
+            img = require('@assets/images/intellect.png');
             break;
         case 'stealth':
-            img = require('../assets/images/stealth.png');
+            img = require('@assets/images/stealth.png');
             break;
         case 'charisma':
-            img = require('../assets/images/charisma.png');
+            img = require('@assets/images/charisma.png');
             break;
         default:
             img = null;
@@ -70,7 +70,7 @@ const MyButton = <RouteName extends keyof RootStackParamList>({ path, property, 
             <TouchableOpacity style={styles.button} onPress={navig} disabled={disable}>
                 <Text style={styles.buttonText}>Нажми меня</Text>
             </TouchableOpacity>
-            {img ? <Image source={img} style={styles.image} /> : <Image source={require('../assets/images/void.png')} style={styles.image} />}
+            {img ? <Image source={img} style={styles.image} /> : <Image source={require('@assets/images/void.png')} style={styles.image} />}
         </View>
     );
 };

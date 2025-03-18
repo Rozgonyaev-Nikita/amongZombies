@@ -3,12 +3,14 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon2 from 'react-native-vector-icons/Fontisto';
 import Icon3 from 'react-native-vector-icons/AntDesign';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types/navigTypes';
 
-interface IHeaderProps {
-
+interface IHeaderProps<RouteName extends keyof RootStackParamList> {
+    navigation: NativeStackNavigationProp<RootStackParamList, RouteName>;
 }
 
-const Header: FC<IHeaderProps> = () => {
+const Header = <RouteName extends keyof RootStackParamList>({navigation}: IHeaderProps<RouteName>) => {
 
     const handlePress = () => {
         console.log('karp')

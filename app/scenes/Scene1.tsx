@@ -1,28 +1,31 @@
 import React from 'react'
-import { Text, View, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, ImageBackground, Image, Dimensions } from 'react-native'
 
 type Props = {}
 
 const Scene1 = (props: Props) => {
   return (
     <ImageBackground 
-    source={require('../../assets/images/fon.jpg')}
-      // source={{ uri: '' }} // Замените URL на URL вашего изображения
-      style={styles.container}
+      source={require('@assets/images/fon.jpg')}
+      style={styles.backgroundImage}
+      resizeMode="cover"
     >
-      <View style={styles.groupButtons}>
-        <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
-          <Text style={styles.buttonText}>Продолжить</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
-          <Text style={styles.buttonText}>Новая игра</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
-          <Text style={styles.buttonText}>Помощь</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
-          <Text style={styles.buttonText}>Выход</Text>
-        </TouchableOpacity>
+      <View style={styles.container}>
+        <Image source={require('../../assets/images/zombie.png')} style={styles.logo} />
+        <View style={styles.groupButtons}>
+          <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
+            <Text style={styles.buttonText}>Продолжить</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
+            <Text style={styles.buttonText}>Новая игра</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
+            <Text style={styles.buttonText}>Помощь</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
+            <Text style={styles.buttonText}>Выход</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ImageBackground>
   )
@@ -30,10 +33,29 @@ const Scene1 = (props: Props) => {
 
 export default Scene1
 
+const { width, height } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  logo: {
+    width: 220,
+    height: 220,
+    alignSelf: 'center',
+    marginBottom: 20,
   },
   groupButtons: {
     flex: 1,
