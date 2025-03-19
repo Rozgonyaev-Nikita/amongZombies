@@ -5,7 +5,7 @@ import { RootStackParamList } from '../types/navigTypes';
 
 // Обобщённый тип для пропсов
 interface MyButtonProps<RouteName extends keyof RootStackParamList> {
-    path: RouteName; // Имя экрана, на который будет происходить навигация
+    path: RouteName | 'karp'; // Имя экрана, на который будет происходить навигация
     property?: string;
     propertyValue?: number;
     propetryTarget?: number;
@@ -13,23 +13,14 @@ interface MyButtonProps<RouteName extends keyof RootStackParamList> {
     altPath?: RouteName; // Альтернативный экран
     spec?: boolean;
     navigation: NativeStackNavigationProp<RootStackParamList, RouteName>; // Типизация навигации
+    callBack?: () => void;
 }
 
 // Обобщённый компонент
-const MyButton = <RouteName extends keyof RootStackParamList>({ path, property, propertyValue, propetryTarget, flag, altPath, navigation, spec }: MyButtonProps<RouteName>) => {
+const MyButton = <RouteName extends keyof RootStackParamList>({ path, property,  navigation, callBack }: MyButtonProps<RouteName>) => {
     const [disable, setDisable] = useState(false);
     let img;
 
-    // Determine the appropriate path based on conditions
-    if (!Array.isArray(propertyValue)) {
-        path = path; // Keep the original path
-    } else {
-        path = propertyValue.every((value, index) => value > propetryTarget[index]) ? path : altPath;
-    }
-
-    if (spec && !altPath) {
-        setDisable(true);
-    }
 
     switch (property) {
         case 'power':
@@ -52,22 +43,22 @@ const MyButton = <RouteName extends keyof RootStackParamList>({ path, property, 
     }
 
     const navig = () => {
-        if (spec && !altPath) {
-            setDisable(true);
-            return;
-        }
-
-        if (path) {
+        console.log(path)
+        if (path !== 'karp') {
             console.log("Navigating to:", path);
             navigation.replace(path); // Используем navigate
-        } else {
+        } else if (path === "karp" && callBack) {
+            console.log('callBack')
+            callBack();
+            setDisable(true);
+        }   else{
             console.error("Path is undefined. Cannot navigate.");
         }
     };
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={navig} disabled={disable}>
+            <TouchableOpacity style={[styles.button, { backgroundColor: disable ? '#444' : '#800' }]} onPress={navig} disabled={disable}>
                 <Text style={styles.buttonText}>Нажми меня</Text>
             </TouchableOpacity>
             {img ? <Image source={img} style={styles.image} /> : <Image source={require('@assets/images/void.png')} style={styles.image} />}

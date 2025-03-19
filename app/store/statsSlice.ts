@@ -10,7 +10,7 @@ interface IStats {
     charisma: number,
   },
   hidenStatts:{
-    stamina: number,
+    stamina: number,  //выносливость
     composure: number, //холоднокровие
     perception: number, //восприятие
   },

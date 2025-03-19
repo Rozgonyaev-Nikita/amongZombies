@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, ImageBackground, Image, Dimen
 
 type Props = {}
 
-const Scene1 = (props: Props) => {
+const Scene1 = ({navigation}) => {
   return (
     <ImageBackground 
       source={require('@assets/images/fon.jpg')}
@@ -13,11 +13,11 @@ const Scene1 = (props: Props) => {
       <View style={styles.container}>
         <Image source={require('../../assets/images/zombie.png')} style={styles.logo} />
         <View style={styles.groupButtons}>
-          <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
-            <Text style={styles.buttonText}>Продолжить</Text>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+            <Text style={styles.buttonText}>Продолжить2</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
-            <Text style={styles.buttonText}>Новая игра</Text>
+            <Text style={styles.buttonText}>Новая игра3</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={() => console.log('karp')}>
             <Text style={styles.buttonText}>Помощь</Text>
