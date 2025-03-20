@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, ImageBackground, Image, Dimen
 
 type Props = {}
 
-const Scene1 = ({navigation}) => {
+const Scene1Screen = ({navigation}: any) => {
   return (
     <ImageBackground 
       source={require('@assets/images/fon.jpg')}
@@ -31,7 +31,7 @@ const Scene1 = ({navigation}) => {
   )
 }
 
-export default Scene1
+export default Scene1Screen
 
 const { width, height } = Dimensions.get('window');
 
