@@ -19,7 +19,7 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           <View style={styles.container}>
             <Image source={require('../../assets/images/zombie.png')} style={styles.logo} />
             <View style={styles.groupButtons}>
-              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Details')}>
+              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Start')}>
                 <Text style={styles.buttonText}>Продолжить</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Details')}>

@@ -3,3 +3,7 @@ const base = "Вдруг настивычных звуков города мен
 const alt = "Ебать ты долбаеб миша!";
 
 export { base, alt };
+
+// Добавил что бы убрать прежупреждение о обязательном defult export
+const dummyExport = {};
+export default dummyExport;

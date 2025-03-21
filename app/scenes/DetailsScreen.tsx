@@ -29,7 +29,7 @@ const changeText = () => {
       resizeMode="cover"
     >
       <View style={[styles.page, { flex: 1, margin: 0, padding: 0 }]}>
-        <Header />
+        <Header navigation={navigation} />
         <Image
           style={styles.img}
           source={require('@assets/images/treesBlack.png')}
@@ -57,3 +57,4 @@ const changeText = () => {
 };
 
 export default DetailsScreen;
+

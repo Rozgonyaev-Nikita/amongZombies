@@ -6,6 +6,7 @@ import { RootStackParamList } from '../types/navigTypes';
 // Обобщённый тип для пропсов
 interface MyButtonProps<RouteName extends keyof RootStackParamList> {
     path: RouteName | 'karp'; // Имя экрана, на который будет происходить навигация
+    text: string;
     property?: string;
     propertyValue?: number;
     propetryTarget?: number;
@@ -17,7 +18,7 @@ interface MyButtonProps<RouteName extends keyof RootStackParamList> {
 }
 
 // Обобщённый компонент
-const MyButton = <RouteName extends keyof RootStackParamList>({ path, property,  navigation, callBack }: MyButtonProps<RouteName>) => {
+const MyButton = <RouteName extends keyof RootStackParamList>({ path, text, property,  navigation, callBack }: MyButtonProps<RouteName>) => {
     const [disable, setDisable] = useState(false);
     let img;
 
@@ -59,7 +60,7 @@ const MyButton = <RouteName extends keyof RootStackParamList>({ path, property, 
     return (
         <View style={styles.container}>
             <TouchableOpacity style={[styles.button, { backgroundColor: disable ? '#444' : '#800' }]} onPress={navig} disabled={disable}>
-                <Text style={styles.buttonText}>Нажми меня</Text>
+                <Text style={styles.buttonText}>{text ? text :'Нажми меня'}</Text>
             </TouchableOpacity>
             {img ? <Image source={img} style={styles.image} /> : <Image source={require('@assets/images/void.png')} style={styles.image} />}
         </View>
@@ -79,7 +80,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     button: {
-        padding: 10,
+        padding: 8, // отступы сверху, справа и слева
+        paddingBottom: 10, // только снизу
         backgroundColor: '#800',
         borderRadius: 5,
         width: "80%",

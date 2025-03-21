@@ -39,3 +39,7 @@ export const stylesMainScreen = StyleSheet.create({
       minHeight: 250
     }
   });
+
+// Добавил что бы убрать прежупреждение о обязательном defult export
+const dummyExport = {};
+export default dummyExport;
