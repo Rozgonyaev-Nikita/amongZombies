@@ -5,7 +5,7 @@ import { RootStackParamList } from '../types/navigTypes';
 
 // Обобщённый тип для пропсов
 interface MyButtonProps<RouteName extends keyof RootStackParamList> {
-    path: RouteName | 'karp'; // Имя экрана, на который будет происходить навигация
+    path: RouteName | 'deadlock'; // Имя экрана, на который будет происходить навигация
     text: string;
     property?: string;
     propertyValue?: number;
@@ -45,10 +45,10 @@ const MyButton = <RouteName extends keyof RootStackParamList>({ path, text, prop
 
     const navig = () => {
         console.log(path)
-        if (path !== 'karp') {
+        if (path !== 'deadlock') {
             console.log("Navigating to:", path);
             navigation.replace(path); // Используем navigate
-        } else if (path === "karp" && callBack) {
+        } else if (path === "deadlock" && callBack) {
             console.log('callBack')
             callBack();
             setDisable(true);
@@ -68,34 +68,33 @@ const MyButton = <RouteName extends keyof RootStackParamList>({ path, text, prop
 };
 
 export default MyButton;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        height: 30,
-        maxHeight: 60,
-        marginLeft: 30,
-        flexDirection: "row",
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    button: {
-        padding: 8, // отступы сверху, справа и слева
-        paddingBottom: 10, // только снизу
-        backgroundColor: '#800',
-        borderRadius: 5,
-        width: "80%",
-        marginVertical: 10,
-        alignSelf: 'center', // Центрируем кнопку
-    },
-    buttonText: {
-        color: '#FFFFFF',
-        textAlign: 'center',
-        fontSize: 16,
-    },
-    image: {
-        marginLeft: 10, // Отступ слева для расстояния между кнопкой и изображением
-        height: 30,
-        width: 30,
-    },
-});
+  const styles = StyleSheet.create({
+      container: {
+          marginLeft: 30,
+          flexDirection: "row",
+          justifyContent: 'center',
+          alignItems: 'center',
+      },
+      button: {
+          height: "auto",
+          minHeight: 40,
+          padding: 5,
+          backgroundColor: '#800',
+          borderRadius: 5,
+          width: "80%",
+          marginVertical: 10,
+          alignSelf: 'center',
+          justifyContent: 'center',
+          alignItems: 'center',
+      },
+      buttonText: {
+          color: '#FFFFFF',
+          fontSize: 16,
+          textAlign: 'center', // Add this to ensure text is centered regardless of line count
+      },
+      image: {
+          marginLeft: 10,
+          height: 30,
+          width: 30,
+      },
+  });

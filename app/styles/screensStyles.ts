@@ -32,7 +32,7 @@ export const stylesMainScreen = StyleSheet.create({
       // fontFamily: "bar-r"
     },
     groupButton: {
-      flex: 1,
+      // flex: 1,
       justifyContent: 'center',
       // paddingBottom: 30,
       // maxHeight: 300,

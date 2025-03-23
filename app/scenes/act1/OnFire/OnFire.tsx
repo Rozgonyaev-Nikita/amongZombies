@@ -5,6 +5,7 @@ import { View, Text, Image, ScrollView, ImageBackground, StyleSheet } from 'reac
 import { stylesMainScreen as styles } from '@styles/screensStyles';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from 'app/types/navigTypes';
+import { base, var1, var2, var3, var4, result } from './OnFireText'
 
 type OnFireNavigationProp = NativeStackNavigationProp<RootStackParamList, 'OnFire'>;
 
@@ -14,12 +15,20 @@ interface Props {
 
 const OnFire: React.FC<Props> = ({ navigation }) => {
 
-  const [karp, setKarp] = useState(false);
+  const [text, setText] = useState(base);
   
-  const changeText = () => {
-    setKarp(true)
+  const changeText = (txt: string) => {
+    if (txt === 'var1') {
+        setText(var1)
+    } else if (txt === 'var2') {
+        setText(var2)
+    } else if (txt === 'var3') {
+        setText(var3)
+    // console.log('karpik')
+    } else if (txt === 'var4') {
+        setText(var4)
   }
-  
+}
   return (
     <ImageBackground 
     source={require('@assets/images/fon.jpg')} 
@@ -39,17 +48,18 @@ const OnFire: React.FC<Props> = ({ navigation }) => {
           indicatorStyle="white"
         >
           <Text style={styles.text}>
-          Я почувствовал, как адреналин врывается в мою кровь, отгоняя головную боль. «Нет, стойте. Отпустите меня» — хотел я закричать, но горло пересохло, язык едва двигался. Связки отказывались произносить слова. Я только и смог издать слабый хрип.
-          Вращая головой в панике, я заметил её — женщину на соседем костре. По её выражению лица мне стало ясно, что она уже сдалась. И лишь ждала своей жалеой участи.
+          {text}
+          {text !== base && result }
           </Text>
         </ScrollView>
-      <View style={styles.groupButton}>
-        <MyButton path="Scene1" property='power' navigation={navigation} />
-        <MyButton path="Scene1" property='agility' navigation={navigation}/>
-        <MyButton path="Scene1" property='intellect' navigation={navigation} />
-        <MyButton path="Scene1" property='charisma' navigation={navigation} />
-        <MyButton path="karp"  navigation={navigation} callBack={changeText}/>
-      </View>
+      {text === base ? <View style={styles.groupButton}>
+        <MyButton path="deadlock"  navigation={navigation} callBack={() => changeText('var1')} text='Расшатать шест'/>
+        <MyButton path="deadlock" property='power' navigation={navigation} callBack={() => changeText('var2')} text='Попытаться вырваться силой'/>
+        <MyButton path="deadlock" property='agility' navigation={navigation} callBack={() => changeText('var3')} text='Освободиться с помощью гибких суставов'/>
+        <MyButton path="deadlock" property='charisma' navigation={navigation} callBack={() => changeText('var4')} text='Вести переговоры'/>
+        {/* <MyButton path="karp"  navigation={navigation} callBack={changeText}/>
+        <MyButton path="karp"  navigation={navigation} callBack={changeText}/> */}
+      </View> : <MyButton path='OnFire' text='Продолжить' navigation={navigation} />}
     </View>
   </ImageBackground>
   );
@@ -64,4 +74,4 @@ const OnFire: React.FC<Props> = ({ navigation }) => {
 //   },
 // });
 
-export default OnFire;
+export default OnFire
